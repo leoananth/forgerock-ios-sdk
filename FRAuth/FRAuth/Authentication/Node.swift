@@ -109,8 +109,8 @@ public class Node: NSObject {
                 // Support AM 6.5.2 stage property workaround with MetadataCallback
                 if let metadataCallback = callbackObj as? MetadataCallback, let outputs = metadataCallback.response[CBConstants.output] as? [[String: Any]] {
                     for output in outputs {
-                        if let outputName = output[CBConstants.name] as? String, outputName == CBConstants.data, let outputValue = output[CBConstants.value] as? [String: String] {
-                            self.stage = outputValue[CBConstants.stage]
+                        if let outputName = output[CBConstants.name] as? String, outputName == CBConstants.data, let outputValue = output[CBConstants.value] as? [String: String], let stage = outputValue[CBConstants.stage] {
+                            self.stage = stage
                         }
                     }
                 }
