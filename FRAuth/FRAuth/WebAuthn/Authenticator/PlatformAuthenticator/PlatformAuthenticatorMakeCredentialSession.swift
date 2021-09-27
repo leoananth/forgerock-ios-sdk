@@ -221,8 +221,8 @@ class PlatformAuthenticatorMakeCredentialSession: AuthenticatorMakeCredentialSes
             DispatchQueue.main.async {
                 let context = LAContext()
                 var evalError: NSError?
-                if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &evalError) {
-                    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: NSLocalizedString(WebAuthn.localAuthenticationString, comment: "Description text for local authentication reason displayed in iOS' local authentication screen.")) { (result, error) in
+                if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &evalError) {
+                    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: NSLocalizedString(WebAuthn.localAuthenticationString, comment: "Description text for local authentication reason displayed in iOS' local authentication screen.")) { (result, error) in
                         
                         if result {
                             completion(nil)

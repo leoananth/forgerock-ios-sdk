@@ -293,9 +293,9 @@ class PlatformAuthenticatorGetAssertionSession: AuthenticatorGetAssertionSession
             DispatchQueue.main.async {
                 let context = LAContext()
                 var evalError: NSError?
-                if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &evalError) {
+                if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &evalError) {
                     FRLog.v("Evaluation with LocalContext is available, performing biometric LocalAuthentication", subModule: WebAuthn.module)
-                    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: NSLocalizedString(WebAuthn.localAuthenticationString, comment: "Description text for local authentication reason displayed in iOS' local authentication screen.")) { (result, error) in
+                    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: NSLocalizedString(WebAuthn.localAuthenticationString, comment: "Description text for local authentication reason displayed in iOS' local authentication screen.")) { (result, error) in
                         
                         if result {
                             FRLog.v("User Verification is completed", subModule: WebAuthn.module)
